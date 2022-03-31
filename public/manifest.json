@@ -1,8 +1,8 @@
 {
-  "short_name": "Aave v3",
-  "name": "Aave v3",
+  "short_name": "Ormi v3",
+  "name": "Ormi v3",
   "description": "Non-custodial liquidity protocol",
-  "iconPath": "aave.svg",
+  "iconPath": "ormi.svg",
   "icons": [
     {
       "src": "favicon32.png",

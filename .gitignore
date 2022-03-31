@@ -42,3 +42,6 @@ package-lock.json
 
 .eslintcache
 .idea
+
+# vscode
+*.code-workspace

@@ -63,7 +63,7 @@ If you want a custom name to appear alongside the icon you can alter `src/ui-con
 
 ## Translations
 
-Aave uses [Crowdin](https://crowdin.com/project/aave-interface) for translation management.
+Ormi uses [Crowdin](https://crowdin.com/project/aave-interface) for translation management.
 
 Feel free to reach out to us on discord to become a translator!
 

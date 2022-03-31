@@ -70,16 +70,16 @@ msgid "AToken supply is not zero"
 msgstr "El balance de AToken no es cero"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave Governance"
+msgid "Ormi Governance"
 msgstr "Gobierno de Aave"
 
 #: src/modules/governance/GovernanceTopPanel.tsx
-msgid "Aave is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance documentation"
-msgstr "Aave es un protocolo completamente descentralizado y gobernado por la comunidad de los dueños de AAVE token. Los dueños de token AAVE pueden votar por nuevas propuestas o delegar los votos a una dirección de su elección. Para aprender más revisa la documentación de Gobierno"
+msgid "Ormi is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance documentation"
+msgstr "Ormi es un protocolo completamente descentralizado y gobernado por la comunidad de los dueños de AAVE token. Los dueños de token AAVE pueden votar por nuevas propuestas o delegar los votos a una dirección de su elección. Para aprender más revisa la documentación de Gobierno"
 
 #: src/modules/staking/StakingPanel.tsx
-msgid "Aave per month"
-msgstr "Aave por mes"
+msgid "Ormi per month"
+msgstr "Ormi por mes"
 
 #: src/layouts/WalletWidget.tsx
 msgid "Account"
@@ -253,7 +253,7 @@ msgid "Before supplying"
 msgstr "Antes de suministrar"
 
 #: src/components/infoModalContents/ApprovalInfoContent.tsx
-msgid "Before supplying, you need to approve its usage by the Aave protocol. You can learn more in our<0>FAQ</0>"
+msgid "Before supplying, you need to approve its usage by the Ormi protocol. You can learn more in our<0>FAQ</0>"
 msgstr "Antes de suministrar, necesitas aprobar tu uso por el protocolo Aave. Puedes obtener más información en nuestras<0>Preguntas Frecuentes</0>"
 
 #: pages/index.page.tsx
@@ -1119,7 +1119,7 @@ msgid "Select APY type to switch"
 msgstr "Seleccione el tipo APY para cambiar"
 
 #: src/components/MarketSwitcher.tsx
-msgid "Select Aave Market"
+msgid "Select Ormi Market"
 msgstr "Seleccionar Mercado Aave"
 
 #: src/layouts/components/LanguageSwitcher.tsx
@@ -1296,8 +1296,8 @@ msgid "Switch rate"
 msgstr "Tasa de cambio"
 
 #: src/ui-config/menu-items/index.tsx
-msgid "Switch to Aave Classic"
-msgstr "Cambiar a Aave Classic"
+msgid "Switch to Ormi Classic"
+msgstr "Cambiar a Ormi Classic"
 
 #: src/components/transactions/RateSwitch/RateSwitchActions.tsx
 msgid "Switching rate"
