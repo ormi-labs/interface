@@ -1,7 +1,7 @@
 {
-  "short_name": "Ormi v3",
-  "name": "Ormi v3",
-  "description": "Non-custodial liquidity protocol",
+  "short_name": "Ormi",
+  "name": "Ormi Protocol",
+  "description": "Permissionless credit/lending protocol based on Metaverse/web3 native reputation",
   "iconPath": "ormi.svg",
   "icons": [
     {
