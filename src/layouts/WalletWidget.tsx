@@ -110,7 +110,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
         variant="subheader2"
         sx={{
           display: { xs: 'block', md: 'none' },
-          color: '#A5A8B6',
+          color: '#FFDEAD',
           px: 4,
           py: 2,
         }}
@@ -142,7 +142,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             {ensNameAbbreviated && (
-              <Typography variant="h4" color={{ xs: '#F1F1F3', md: 'text.primary' }}>
+              <Typography variant="h4" color={{ xs: '#FFDEAD', md: 'text.primary' }}>
                 {ensNameAbbreviated}
               </Typography>
             )}
@@ -151,8 +151,8 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
               variant={ensNameAbbreviated ? 'caption' : 'h4'}
               color={
                 ensNameAbbreviated
-                  ? { xs: '#A5A8B6', md: 'text.secondary' }
-                  : { xs: '#F1F1F3', md: 'text.primary' }
+                  ? { xs: '#FFDEAD', md: 'text.secondary' }
+                  : { xs: '#FFDEAD', md: 'text.primary' }
               }
             >
               {textCenterEllipsis(currentAccount, ensNameAbbreviated ? 12 : 7, 4)}
@@ -187,7 +187,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
                 borderRadius: '50%',
               }}
             />
-            <Typography color={{ xs: '#F1F1F3', md: 'text.primary' }} variant="subheader1">
+            <Typography color={{ xs: '#FFDEAD', md: 'text.primary' }} variant="subheader1">
               {networkConfig.name}
             </Typography>
           </Box>
@@ -197,13 +197,13 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
 
       <Box
         component={component}
-        sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
+        sx={{ color: { xs: '#FFDEAD', md: 'text.primary' } }}
         onClick={handleCopy}
       >
         <ListItemIcon
           sx={{
             color: {
-              xs: '#F1F1F3',
+              xs: '#FFDEAD',
               md: 'primary.light',
               minWidth: 'unset',
               marginRight: 12,
@@ -223,13 +223,13 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
         <Link href={networkConfig.explorerLinkBuilder({ address: currentAccount })}>
           <Box
             component={component}
-            sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
+            sx={{ color: { xs: '#FFDEAD', md: 'text.primary' } }}
             onClick={handleClose}
           >
             <ListItemIcon
               sx={{
                 color: {
-                  xs: '#F1F1F3',
+                  xs: '#FFDEAD',
                   md: 'primary.light',
                   minWidth: 'unset',
                   marginRight: 12,
@@ -249,12 +249,12 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
 
       <Box
         component={component}
-        sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
+        sx={{ color: { xs: '#FFDEAD', md: 'text.primary' } }}
         onClick={handleDisconnect}
       >
         <ListItemIcon
           sx={{
-            color: { xs: '#F1F1F3', md: 'primary.light', minWidth: 'unset', marginRight: 12 },
+            color: { xs: '#FFDEAD', md: 'primary.light', minWidth: 'unset', marginRight: 12 },
           }}
         >
           <SvgIcon fontSize="small">
@@ -273,17 +273,21 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
       {md && connected && open ? (
         <MobileCloseButton setOpen={setOpen} />
       ) : loading ? (
-        <Skeleton height={36} width={126} sx={{ background: '#383D51' }} />
+        <Skeleton height={36} width={126} sx={{ background: '#A52A2A' }} />
       ) : (
         <Button
-          variant={connected ? 'surface' : 'gradient'}
+          variant={connected ? 'surface' : 'contained'}
           aria-label="wallet"
           id="wallet-button"
           aria-controls={open ? 'wallet-button' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
           onClick={handleClick}
-          sx={{ p: connected ? '5px 8px' : undefined }}
+          sx={{
+            p: connected ? '5px 8px' : undefined,
+            backgroundColor: 'powderblue',
+            color: 'black',
+          }}
           startIcon={
             connected && (
               <Box

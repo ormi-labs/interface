@@ -60,7 +60,7 @@ export const ReserveActions = ({ underlyingAsset }: ReserveActionsProps) => {
     return (
       <ConnectWalletPaper
         description={
-          <Trans>To see your supplies and borrowings options, connect your wallet.</Trans>
+          <Trans>Connect your wallet to view your supplies, borrowings, and open positions.</Trans>
         }
         loading={web3Loading}
         sx={{ minHeight: 301 }}

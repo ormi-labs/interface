@@ -44,7 +44,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
     return (
       <Box mr={3} sx={{ mr: 3, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {loading ? (
-          <Skeleton variant="circular" width={40} height={40} sx={{ background: '#383D51' }} />
+          <Skeleton variant="circular" width={40} height={40} sx={{ background: '#A52A2A' }} />
         ) : (
           <img
             src={`/icons/tokens/${poolReserve.iconSymbol.toLowerCase()}.svg`}
@@ -59,7 +59,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
 
   const ReserveName = () => {
     return loading ? (
-      <Skeleton width={60} height={28} sx={{ background: '#383D51' }} />
+      <Skeleton width={60} height={28} sx={{ background: '#A52A2A' }} />
     ) : (
       <Typography variant={valueTypographyVariant}>{poolReserve.name}</Typography>
     );
@@ -115,7 +115,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
               <ReserveIcon />
               <Box>
                 {!loading && (
-                  <Typography sx={{ color: '#A5A8B6' }} variant="caption">
+                  <Typography sx={{ color: '#FFDEAD' }} variant="caption">
                     {poolReserve.symbol}
                   </Typography>
                 )}
@@ -144,7 +144,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
           symbol="USD"
           variant={valueTypographyVariant}
           symbolsVariant={symbolsTypographyVariant}
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
         />
       </TopInfoPanelItem>
 
@@ -158,7 +158,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
           symbol="USD"
           variant={valueTypographyVariant}
           symbolsVariant={symbolsTypographyVariant}
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
         />
       </TopInfoPanelItem>
 
@@ -172,7 +172,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
           percent
           variant={valueTypographyVariant}
           symbolsVariant={symbolsTypographyVariant}
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
         />
       </TopInfoPanelItem>
 
@@ -181,11 +181,11 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
         title={<Trans>Oracle price</Trans>}
         titleIcon={
           loading ? (
-            <Skeleton width={16} height={16} sx={{ ml: 1, background: '#383D51' }} />
+            <Skeleton width={16} height={16} sx={{ ml: 1, background: '#A52A2A' }} />
           ) : (
             <Link
               href={currentNetworkConfig.explorerLinkBuilder({ address: poolReserve?.priceOracle })}
-              sx={{ display: 'inline-flex', alignItems: 'center', ml: 1, color: '#A5A8B6' }}
+              sx={{ display: 'inline-flex', alignItems: 'center', ml: 1, color: '#FFDEAD' }}
             >
               <SvgIcon sx={{ fontSize: '16px' }}>
                 <ExternalLinkIcon />
@@ -200,7 +200,7 @@ export const ReserveTopDetails = ({ underlyingAsset }: ReserveTopDetailsProps) =
           symbol="USD"
           variant={valueTypographyVariant}
           symbolsVariant={symbolsTypographyVariant}
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
         />
       </TopInfoPanelItem>
     </TopInfoPanel>

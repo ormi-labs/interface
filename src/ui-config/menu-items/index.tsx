@@ -54,20 +54,20 @@ const moreMenuItems: MoreMenuItem[] = [
     icon: <BookOpenIcon />,
   },
   {
-    link: 'https://discord.gg/7kHKnkDEUf',
+    link: 'https://discord.gg/D3ynHaxcAu',
     title: t`Discord`,
     icon: <DiscordIcon />,
   },
   {
-    link: 'https://github.com/aave/interface',
+    link: 'https://github.com/ormi-fi/ormi-ui-superior',
     title: t`Github`,
     icon: <GithubIcon />,
   },
-  {
+  /*{
     link: 'https://classic.aave.com',
     title: t`Switch to Aave Classic`,
     icon: <AaveClassic />,
-  },
+  },*/
 ];
 
 export const moreMenuExtraItems: MoreMenuItem[] = [];

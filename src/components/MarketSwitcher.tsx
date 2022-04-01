@@ -166,7 +166,7 @@ export const MarketSwitcher = () => {
             p: 0,
             backgroundColor: 'transparent !important',
           },
-          '.MuiSelect-icon': { color: '#F1F1F3' },
+          '.MuiSelect-icon': { color: '#FFDEAD' },
         },
         MenuProps: {
           anchorOrigin: {
@@ -185,7 +185,7 @@ export const MarketSwitcher = () => {
     >
       <Box>
         <Typography variant="subheader2" color="text.secondary" sx={{ px: 4, py: 2 }}>
-          <Trans>Select Aave Market</Trans>
+          <Trans>Select Ormi Market</Trans>
         </Typography>
         <Divider />
       </Box>

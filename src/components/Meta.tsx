@@ -11,15 +11,13 @@ type MetaProps = {
 export function Meta({ title, description, imageUrl, timestamp }: MetaProps) {
   return (
     <Head>
-      <title>Aave - {title}</title>
+      <title>Ormi - {title}</title>
       <meta name="description" content={description} key="description" />
-      <meta property="og:title" content={`Aave - ${title}`} key="title" />
+      <meta property="og:title" content={`Ormi - ${title}`} key="title" />
       <meta property="og:description" content={description} key="ogdescription" />
       {imageUrl && <meta property="og:image" content={imageUrl} key="ogimage" />}
       {imageUrl && <meta name="twitter:image" content={imageUrl} key="twitterimage" />}
-      {imageUrl && (
-        <meta name="twitter:image:alt" content={`aave governance image`} key="twitteralt" />
-      )}
+      {imageUrl && <meta name="twitter:image:alt" content={`ormi image`} key="twitteralt" />}
       <meta name="twitter:site" content="@AaveAave" key="twittersite" />
       <meta
         property="twitter:card"
