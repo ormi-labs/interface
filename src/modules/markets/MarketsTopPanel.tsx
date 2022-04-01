@@ -47,7 +47,7 @@ export const MarketsTopPanel = () => {
           variant={valueTypographyVariant}
           visibleDecimals={2}
           compact
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
           symbolsVariant={symbolsVariant}
         />
       </TopInfoPanelItem>
@@ -62,7 +62,7 @@ export const MarketsTopPanel = () => {
           variant={valueTypographyVariant}
           visibleDecimals={2}
           compact
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
           symbolsVariant={symbolsVariant}
         />
       </TopInfoPanelItem>
@@ -77,7 +77,7 @@ export const MarketsTopPanel = () => {
           variant={valueTypographyVariant}
           visibleDecimals={2}
           compact
-          symbolsColor="#A5A8B6"
+          symbolsColor="#FFDEAD"
           symbolsVariant={symbolsVariant}
         />
       </TopInfoPanelItem>

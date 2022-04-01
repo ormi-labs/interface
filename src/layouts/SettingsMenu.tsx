@@ -46,7 +46,7 @@ export function SettingsMenu() {
         onClick={handleSettingsClick}
         sx={{ p: '7px 8px', minWidth: 'unset', ml: 2 }}
       >
-        <SvgIcon sx={{ color: '#F1F1F3' }} fontSize="small">
+        <SvgIcon sx={{ color: '#FFDEAD' }} fontSize="small">
           <CogIcon />
         </SvgIcon>
       </Button>
@@ -64,7 +64,7 @@ export function SettingsMenu() {
       >
         <MenuItem disabled sx={{ mb: '4px' }}>
           <Typography variant="subheader2" color="text.secondary">
-            <Trans>Global settings</Trans>
+            <Trans>Ormi Settings</Trans>
           </Typography>
         </MenuItem>
 

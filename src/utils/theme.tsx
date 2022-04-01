@@ -127,8 +127,8 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
     palette: {
       mode,
       primary: {
-        main: getColor('#383D51', '#EAEBEF'),
-        light: getColor('#62677B', '#F1F1F3'),
+        main: getColor('#A52A2A', '#EAEBEF'),
+        light: getColor('#62677B', '#FFDEAD'),
         dark: getColor('#292E41', '#D2D4DC'),
       },
       secondary: {
@@ -165,25 +165,25 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         '200': getColor('#ECF8ED', '#0A130B'), // for alert background
       },
       text: {
-        primary: getColor('#303549', '#F1F1F3'),
-        secondary: getColor('#62677B', '#A5A8B6'),
+        primary: getColor('#303549', '#FFDEAD'),
+        secondary: getColor('black', '#FFDEAD'),
         disabled: getColor('#D2D4DC', '#62677B'),
-        muted: getColor('#A5A8B6', '#8E92A3'),
+        muted: getColor('brown', '#8E92A3'),
       },
       background: {
-        default: getColor('#F1F1F3', '#1B2030'),
-        paper: getColor('#FFFFFF', '#292E41'),
-        surface: getColor('#F7F7F9', '#383D51'),
-        header: getColor('#2B2D3C', '#1B2030'),
+        default: getColor('#FFDEAD', '#1B2030'),
+        paper: getColor('antiquewhite', '#292E41'),
+        surface: getColor('#F7F7F9', '#A52A2A'),
+        header: getColor('#A52A2A', '#1B2030'),
       },
       divider: getColor('#EAEBEF', '#EBEBEF14'),
       action: {
         active: getColor('#8E92A3', '#EBEBEF8F'),
-        hover: getColor('#F1F1F3', '#EBEBEF14'),
+        hover: getColor('#FFDEAD', '#EBEBEF14'),
         selected: getColor('#EAEBEF', '#EBEBEF29'),
         disabled: getColor('#BBBECA', '#EBEBEF4D'),
         disabledBackground: getColor('#EAEBEF', '#EBEBEF1F'),
-        focus: getColor('#F1F1F3', '#EBEBEF1F'),
+        focus: getColor('#FFDEAD', '#EBEBEF1F'),
       },
       gradients: {
         aaveGradient: 'linear-gradient(248.86deg, #B6509E 10.51%, #2EBAC6 93.41%)',
@@ -249,6 +249,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         letterSpacing: pxToRem(0.1),
         lineHeight: pxToRem(16),
         fontSize: pxToRem(12),
+        //color: 'black'
       },
       description: {
         fontFamily: FONT,
@@ -409,7 +410,7 @@ export function getThemedComponents(theme: Theme) {
               color: theme.palette.common.white,
               border: '1px solid',
               borderColor: '#EBEBED1F',
-              backgroundColor: '#383D51',
+              backgroundColor: '#A52A2A',
               '&:hover, &.Mui-focusVisible': {
                 backgroundColor: theme.palette.background.header,
               },
@@ -791,7 +792,7 @@ export function getThemedComponents(theme: Theme) {
       MuiToggleButtonGroup: {
         styleOverrides: {
           root: {
-            backgroundColor: '#383D51',
+            backgroundColor: '#A52A2A',
             border: '1px solid rgba(235, 235, 237, 0.12)',
             padding: '4px',
           },
@@ -802,7 +803,7 @@ export function getThemedComponents(theme: Theme) {
           root: {
             border: '0px',
             flex: 1,
-            backgroundColor: '#383D51',
+            backgroundColor: '#A52A2A',
             borderRadius: '4px',
 
             '&.Mui-selected, &.Mui-selected:hover': {

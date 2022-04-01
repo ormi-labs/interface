@@ -44,7 +44,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
               component={Link}
               href={item.link}
               variant="h2"
-              color="#F1F1F3"
+              color="#FFDEAD"
               sx={{ width: '100%', p: 4 }}
               onClick={() => (setOpen ? setOpen(false) : undefined)}
             >
@@ -55,7 +55,7 @@ export const NavItems = ({ setOpen }: NavItemsProps) => {
               component={Link}
               href={item.link}
               sx={(theme) => ({
-                color: '#F1F1F3',
+                color: '#FFDEAD',
                 p: '6px 8px',
                 position: 'relative',
                 '.active&:after, &:hover&:after': {

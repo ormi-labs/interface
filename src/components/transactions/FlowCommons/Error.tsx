@@ -42,8 +42,8 @@ export const TxErrorView = ({ txError }: { txError: TxErrorType }) => {
 
         <Typography>
           <Trans>
-            You can report incident to our <Link href="https://discord.gg/7kHKnkDEUf">Discord</Link>{' '}
-            or <Link href="https://github.com/aave/interface">Github</Link>.
+            You can report incident to our <Link href="https://discord.gg/D3ynHaxcAu">Discord</Link>{' '}
+            or <Link href="https://github.com/ormi-fi/ormi-ui-superior">Github</Link>.
           </Trans>
         </Typography>
 

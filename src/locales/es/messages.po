@@ -655,7 +655,7 @@ msgstr "Github"
 
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/SettingsMenu.tsx
-msgid "Global settings"
+msgid "Ormi Settings"
 msgstr "Configuración global"
 
 #: src/modules/reserve-overview/ReserveTopDetails.tsx
@@ -1119,7 +1119,7 @@ msgid "Select APY type to switch"
 msgstr "Seleccione el tipo APY para cambiar"
 
 #: src/components/MarketSwitcher.tsx
-msgid "Select Aave Market"
+msgid "Select Ormi Market"
 msgstr "Seleccionar Mercado Aave"
 
 #: src/layouts/components/LanguageSwitcher.tsx
@@ -1440,7 +1440,7 @@ msgid "To repay on behalf of a user an explicit amount to repay is needed"
 msgstr "Para reembolsar en nombre de un usuario, se necesita una cantidad explicitad para reembolsar"
 
 #: src/modules/reserve-overview/ReserveActions.tsx
-msgid "To see your supplies and borrowings options, connect your wallet."
+msgid "Connect your wallet to view your supplies, borrowings, and open positions."
 msgstr "Para ver sus suministros y opciones de préstamo, conecta tu cartera."
 
 #: src/modules/markets/MarketsTopPanel.tsx

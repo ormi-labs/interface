@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
+import Typography from '@mui/material/Typography';
 import { Link } from '../components/primitives/Link';
 import { uiConfig } from '../uiConfig';
 import { NavItems } from './components/NavItems';
@@ -73,7 +74,10 @@ export function AppHeader() {
           sx={{ lineHeight: 0, mr: 7, transition: '0.3s ease all', '&:hover': { opacity: 0.7 } }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={uiConfig.appLogo} alt="An SVG of an eye" height={20} />
+          <Typography variant="h1" component="div" style={{ color: 'white' }}>
+            ORMI
+          </Typography>
+          {/*<img src={uiConfig.appLogo} alt="An SVG of an eye" height={20} />*/}
         </Box>
 
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>

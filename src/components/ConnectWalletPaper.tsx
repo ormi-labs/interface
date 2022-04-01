@@ -23,26 +23,29 @@ export const ConnectWalletPaper = ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        alignSelf: 'center',
         justifyContent: 'center',
         textAlign: 'center',
         p: 4,
-        flex: 1,
+        width: '35%',
+        padding: 7,
+        //flex: 0.25,
         ...sx,
       }}
     >
-      <LoveGhost style={{ marginBottom: '16px' }} />
+      {/*<LoveGhost style={{ marginBottom: '16px' }} />*/}
       <>
         {loading ? (
           <CircularProgress />
         ) : (
           <>
             <Typography variant="h2" sx={{ mb: 2 }}>
-              <Trans>Please, connect your wallet</Trans>
+              <Trans>Please link your wallet.</Trans>
             </Typography>
             <Typography sx={{ mb: 6 }} color="text.secondary">
               {description || (
                 <Trans>
-                  Please connect your wallet to see your supplies, borrowings, and open positions.
+                  Connect your wallet to view your supplies, borrowings, and open positions.
                 </Trans>
               )}
             </Typography>
