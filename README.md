@@ -22,7 +22,7 @@ Ormi is made possible because it is built on top of DeFi giant Aave. Ormi's lend
 
 # Ormi protocol interface
 
-An open source interface for the decentralized liquidity protocol Aave
+An open source interface for the decentralized credit protocol Ormi. 
 
 Enabling users to:
 
