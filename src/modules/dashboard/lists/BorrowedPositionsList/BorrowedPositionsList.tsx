@@ -84,14 +84,7 @@ export const BorrowedPositionsList = () => {
     <ListWrapper
       title={<Trans>Your borrows</Trans>}
       localStorageName="borrowedAssetsDashboardTableCollapse"
-      subTitleComponent={
-        currentMarketData.v3 ? (
-          <DashboardEModeButton
-            userEmodeCategoryId={user.userEmodeCategoryId}
-            onClick={() => openEmode()}
-          />
-        ) : undefined
-      }
+      subTitleComponent={undefined}
       noData={!borrowPositions.length}
       topInfo={
         <>

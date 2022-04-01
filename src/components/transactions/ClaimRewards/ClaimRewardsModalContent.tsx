@@ -32,7 +32,7 @@ export enum ErrorType {
 export const ClaimRewardsModalContent = () => {
   const { gasLimit, mainTxState: claimRewardsTxState, txError } = useModalContext();
   const { user, reserves } = useAppDataContext();
-  const { currentChainId, currentMarketData, currentMarket } = useProtocolDataContext();
+  const { currentChainId, currentMarket } = useProtocolDataContext();
   const { chainId: connectedChainId } = useWeb3Context();
   const [claimableUsd, setClaimableUsd] = useState('0');
   const [selectedRewardSymbol, setSelectedRewardSymbol] = useState<string>('all');
@@ -52,7 +52,7 @@ export const ClaimRewardsModalContent = () => {
 
       let tokenPrice = 0;
       // getting price from reserves for the native rewards for v2 markets
-      if (!currentMarketData.v3 && Number(rewardBalance) > 0) {
+      if (Number(rewardBalance) > 0) {
         if (currentMarket === 'proto_mainnet') {
           const aave = reserves.find((reserve) => reserve.symbol === 'AAVE');
           tokenPrice = aave ? Number(aave.priceInUSD) : 0;
@@ -63,8 +63,6 @@ export const ClaimRewardsModalContent = () => {
             }
           });
         }
-      } else {
-        tokenPrice = Number(incentive.rewardPriceFeed);
       }
 
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;
