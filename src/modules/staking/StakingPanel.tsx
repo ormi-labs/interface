@@ -298,7 +298,7 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
           title={<Trans>Claimable AAVE</Trans>}
           value={formatEther(stakeUserData?.userIncentivesToClaim || '0')}
           valueUSD={claimableUSD}
-          bottomLineTitle={<Trans>Aave per month</Trans>}
+          bottomLineTitle={<Trans>Ormi per month</Trans>}
           bottomLineComponent={
             <FormattedNumber
               value={aavePerMonth}

@@ -1,25 +1,34 @@
 ```
-        .///.                .///.     //.            .//  `/////////////-
-       `++:++`              .++:++`    :++`          `++:  `++:......---.`
-      `/+: -+/`            `++- :+/`    /+/         `/+/   `++.
-      /+/   :+/            /+:   /+/    `/+/        /+/`   `++.
-  -::/++::`  /+:       -::/++::` `/+:    `++:      :++`    `++/:::::::::.
-  -:+++::-`  `/+:      --++/---`  `++-    .++-    -++.     `++/:::::::::.
-   -++.       .++-      -++`       .++.    .++.  .++-      `++.
-  .++-         -++.    .++.         -++.    -++``++-       `++.
- `++:           :++`  .++-           :++`    :+//+:        `++:----------`
- -/:             :/-  -/:             :/.     ://:         `/////////////-
+     OOOOOOOOO     RRRRRRRRRRRRRRRRR   MMMMMMMM               MMMMMMMMIIIIIIIIII
+   OO:::::::::OO   R::::::::::::::::R  M:::::::M             M:::::::MI::::::::I
+ OO:::::::::::::OO R::::::RRRRRR:::::R M::::::::M           M::::::::MI::::::::I
+O:::::::OOO:::::::ORR:::::R     R:::::RM:::::::::M         M:::::::::MII::::::II
+O::::::O   O::::::O  R::::R     R:::::RM::::::::::M       M::::::::::M  I::::I
+O:::::O     O:::::O  R::::R     R:::::RM:::::::::::M     M:::::::::::M  I::::I
+O:::::O     O:::::O  R::::RRRRRR:::::R M:::::::M::::M   M::::M:::::::M  I::::I
+O:::::O     O:::::O  R:::::::::::::RR  M::::::M M::::M M::::M M::::::M  I::::I
+O:::::O     O:::::O  R::::RRRRRR:::::R M::::::M  M::::M::::M  M::::::M  I::::I
+O:::::O     O:::::O  R::::R     R:::::RM::::::M   M:::::::M   M::::::M  I::::I
+O:::::O     O:::::O  R::::R     R:::::RM::::::M    M:::::M    M::::::M  I::::I
+O::::::O   O::::::O  R::::R     R:::::RM::::::M     MMMMM     M::::::M  I::::I
+O:::::::OOO:::::::ORR:::::R     R:::::RM::::::M               M::::::MII::::::II
+ OO:::::::::::::OO R::::::R     R:::::RM::::::M               M::::::MI::::::::I
+   OO:::::::::OO   R::::::R     R:::::RM::::::M               M::::::MI::::::::I
+     OOOOOOOOO     RRRRRRRR     RRRRRRRMMMMMMMM               MMMMMMMMIIIIIIIIII
+
 ```
+# Ormi Lending Protocol
+Ormi is made possible because it is built on top of DeFi giant Aave. Ormi's lending protocol began as a fork of Aave's protocol-v2. Special thanks to the Aave team to its commitment to technical excellence, open source, and decentralization to make Ormi a reality.
 
-# Aave protocol interface :ghost:
+# Ormi protocol interface
 
-An open source interface for the decentralized liquidity protocol Aave
+An open source interface for the decentralized credit protocol Ormi. 
 
 Enabling users to:
 
-- Manage and monitor their positions on the Aave Protocol, and the overall status of it
-- Manage and monitor their positions on the Aave Safety module
-- Participate in the Aave Governance
+- Manage and monitor their positions on the Ormi Protocol, and the overall status of it
+- Manage and monitor their positions on the Ormi Safety module
+- Participate in the Ormi Governance
 
 ## How to use
 

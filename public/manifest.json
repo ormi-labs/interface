@@ -1,8 +1,8 @@
 {
-  "short_name": "Aave v3",
-  "name": "Aave v3",
-  "description": "Non-custodial liquidity protocol",
-  "iconPath": "aave.svg",
+  "short_name": "Ormi",
+  "name": "Ormi Protocol",
+  "description": "Permissionless credit/lending protocol based on Metaverse/web3 native reputation",
+  "iconPath": "ormi.svg",
   "icons": [
     {
       "src": "favicon32.png",

@@ -9,7 +9,7 @@ export const ApprovalInfoContent = () => {
     <InfoContentWrapper caption={<Trans>Approval</Trans>}>
       <Typography>
         <Trans>
-          Before supplying, you need to approve its usage by the Aave protocol. You can learn more
+          Before supplying, you need to approve its usage by the Ormi protocol. You can learn more
           in our
           <Link fontWeight={500} href={'https://docs.aave.com/faq/'}>
             FAQ

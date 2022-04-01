@@ -3,7 +3,7 @@ import { CircularProgress, Paper, PaperProps, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 import { ConnectWalletButton } from './WalletConnection/ConnectWalletButton';
 
-import LoveGhost from '/public/loveGhost.svg';
+import OrmiLogo from '/public/ormiLogo.svg';
 
 interface ConnectWalletPaperProps extends PaperProps {
   loading?: boolean;
@@ -30,7 +30,7 @@ export const ConnectWalletPaper = ({
         ...sx,
       }}
     >
-      <LoveGhost style={{ marginBottom: '16px' }} />
+      <OrmiLogo height={150} style={{ marginBottom: '30px' }} />
       <>
         {loading ? (
           <CircularProgress />

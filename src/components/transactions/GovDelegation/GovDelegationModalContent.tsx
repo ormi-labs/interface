@@ -36,7 +36,7 @@ export enum ErrorType {
 export const GovDelegationModalContent = () => {
   const { chainId: connectedChainId } = useWeb3Context();
   const {
-    daveTokens: { aave, stkAave },
+    daveTokens: { aave, stkOrmi },
   } = useAaveTokensProviderContext();
   const { gasLimit, mainTxState: txState, txError } = useModalContext();
 
