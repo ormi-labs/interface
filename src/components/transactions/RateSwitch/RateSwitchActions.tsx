@@ -22,26 +22,16 @@ export const RateSwitchActions = ({
   blocked,
 }: RateSwitchActionsProps) => {
   const { lendingPool } = useTxBuilderContext();
-  const { currentChainId: chainId, currentMarketData } = useProtocolDataContext();
   const { currentAccount } = useWeb3Context();
 
   const { action, loadingTxns, mainTxState, requiresApproval } = useTransactionHandler({
     tryPermit: false,
     handleGetTxns: async () => {
-      if (currentMarketData.v3) {
-        return await lendingPool.swapBorrowRateMode({
-          user: currentAccount,
-          reserve: poolReserve.underlyingAsset,
-          interestRateMode: currentRateMode,
-          useOptimizedPath: optimizedPath(chainId),
-        });
-      } else {
-        return await lendingPool.swapBorrowRateMode({
-          user: currentAccount,
-          reserve: poolReserve.underlyingAsset,
-          interestRateMode: currentRateMode,
-        });
-      }
+      return await lendingPool.swapBorrowRateMode({
+        user: currentAccount,
+        reserve: poolReserve.underlyingAsset,
+        interestRateMode: currentRateMode,
+      });
     },
     skip: blocked,
   });
