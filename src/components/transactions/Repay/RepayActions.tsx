@@ -36,41 +36,18 @@ export const RepayActions = ({
   ...props
 }: RepayActionProps) => {
   const { lendingPool } = useTxBuilderContext();
-  const { currentChainId: chainId, currentMarketData } = useProtocolDataContext();
+  const { currentChainId: chainId } = useProtocolDataContext();
   const { currentAccount } = useWeb3Context();
 
   const { approval, action, requiresApproval, loadingTxns, approvalTxState, mainTxState } =
     useTransactionHandler({
-      tryPermit:
-        currentMarketData.v3 && permitByChainAndToken[chainId]?.[utils.getAddress(poolAddress)],
       handleGetTxns: async () => {
-        if (currentMarketData.v3) {
-          const newPool: Pool = lendingPool as Pool;
-          if (repayWithATokens) {
-            return newPool.repayWithATokens({
-              user: currentAccount,
-              reserve: poolAddress,
-              amount: amountToRepay,
-              rateMode: debtType as InterestRate,
-              useOptimizedPath: optimizedPath(chainId),
-            });
-          } else {
-            return newPool.repay({
-              user: currentAccount,
-              reserve: poolAddress,
-              amount: amountToRepay,
-              interestRateMode: debtType,
-              useOptimizedPath: optimizedPath(chainId),
-            });
-          }
-        } else {
-          return lendingPool.repay({
-            user: currentAccount,
-            reserve: poolAddress,
-            amount: amountToRepay,
-            interestRateMode: debtType,
-          });
-        }
+        return lendingPool.repay({
+          user: currentAccount,
+          reserve: poolAddress,
+          amount: amountToRepay,
+          interestRateMode: debtType,
+        });
       },
       handleGetPermitTxns: async (signature, deadline) => {
         const newPool: Pool = lendingPool as Pool;

@@ -45,7 +45,7 @@ export const DashboardTopPanel = () => {
 
       let tokenPrice = 0;
       // getting price from reserves for the native rewards for v2 markets
-      if (!currentMarketData.v3 && Number(rewardBalance) > 0) {
+      if (Number(rewardBalance) > 0) {
         if (currentMarket === 'proto_mainnet') {
           const aave = reserves.find((reserve) => reserve.symbol === 'AAVE');
           tokenPrice = aave ? Number(aave.priceInUSD) : 0;
@@ -56,8 +56,6 @@ export const DashboardTopPanel = () => {
             }
           });
         }
-      } else {
-        tokenPrice = Number(incentive.rewardPriceFeed);
       }
 
       const rewardBalanceUsd = Number(rewardBalance) * tokenPrice;

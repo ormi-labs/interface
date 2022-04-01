@@ -1,10 +1,8 @@
 import { Trans } from '@lingui/macro';
 import { useTransactionHandler } from 'src/helpers/useTransactionHandler';
 import { ComputedReserveData } from 'src/hooks/app-data-provider/useAppDataProvider';
-import { useProtocolDataContext } from 'src/hooks/useProtocolDataContext';
 import { useTxBuilderContext } from 'src/hooks/useTxBuilder';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
-import { optimizedPath } from 'src/utils/utils';
 import { TxActionsWrapper } from '../TxActionsWrapper';
 
 export type WithdrawActionsProps = {
@@ -25,29 +23,18 @@ export const WithdrawActions = ({
   blocked,
 }: WithdrawActionsProps) => {
   const { lendingPool } = useTxBuilderContext();
-  const { currentChainId: chainId, currentMarketData } = useProtocolDataContext();
   const { currentAccount } = useWeb3Context();
 
   const { action, loadingTxns, mainTxState, approvalTxState, approval, requiresApproval } =
     useTransactionHandler({
       tryPermit: false,
       handleGetTxns: async () => {
-        if (currentMarketData.v3) {
-          return lendingPool.withdraw({
-            user: currentAccount,
-            reserve: poolAddress,
-            amount: amountToWithdraw,
-            aTokenAddress: poolReserve.aTokenAddress,
-            useOptimizedPath: optimizedPath(chainId),
-          });
-        } else {
-          return lendingPool.withdraw({
-            user: currentAccount,
-            reserve: poolAddress,
-            amount: amountToWithdraw,
-            aTokenAddress: poolReserve.aTokenAddress,
-          });
-        }
+        return lendingPool.withdraw({
+          user: currentAccount,
+          reserve: poolAddress,
+          amount: amountToWithdraw,
+          aTokenAddress: poolReserve.aTokenAddress,
+        });
       },
       skip: !amountToWithdraw || parseFloat(amountToWithdraw) === 0 || blocked,
       deps: [amountToWithdraw, poolAddress],

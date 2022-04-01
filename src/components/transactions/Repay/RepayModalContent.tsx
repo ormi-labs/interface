@@ -83,19 +83,11 @@ export const RepayModalContent = ({
     const maxSelected = value === '-1';
     amountRef.current = maxSelected ? maxAmountToRepay.toString(10) : value;
     setAmount(value);
-    if (currentMarketData.v3 && maxSelected && (repayWithATokens || maxAmountToRepay.eq(debt))) {
-      if (tokenToRepayWith.address === API_ETH_MOCK_ADDRESS.toLowerCase()) {
-        setRepayMax(safeAmountToRepayAll.toString(10));
-      } else {
-        setRepayMax('-1');
-      }
-    } else {
-      setRepayMax(
-        safeAmountToRepayAll.lt(balance)
-          ? safeAmountToRepayAll.toString(10)
-          : maxAmountToRepay.toString(10)
-      );
-    }
+    setRepayMax(
+      safeAmountToRepayAll.lt(balance)
+        ? safeAmountToRepayAll.toString(10)
+        : maxAmountToRepay.toString(10)
+    );
   };
 
   // token info
@@ -125,21 +117,6 @@ export const RepayModalContent = ({
       iconSymbol: poolReserve.iconSymbol,
       balance: maxReserveTokenForRepay.toString(10),
     });
-    // push reserve atoken
-    if (currentMarketData.v3) {
-      const aTokenBalance = valueToBigNumber(underlyingBalance);
-      const maxBalance = BigNumber.max(
-        aTokenBalance,
-        BigNumber.min(aTokenBalance, debt).toString(10)
-      );
-      repayTokens.push({
-        address: poolReserve.aTokenAddress,
-        symbol: `a${poolReserve.symbol}`,
-        iconSymbol: poolReserve.iconSymbol,
-        aToken: true,
-        balance: maxBalance.toString(10),
-      });
-    }
     setAssets(repayTokens);
     setTokenToRepayWith(repayTokens[0]);
   }, []);
