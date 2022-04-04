@@ -132,6 +132,7 @@ export const WalletSelector = () => {
           {handleBlocking()}
         </Alert>
       )}
+      <WalletRow key="did" walletName="Sign In with DID" walletType={WalletType.DID} />
       <WalletRow
         key="browser_wallet"
         walletName="Browser wallet"
