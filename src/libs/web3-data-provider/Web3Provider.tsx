@@ -4,6 +4,7 @@ import { hexToAscii } from 'src/utils/utils';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 
 import { Web3Context } from '../hooks/useWeb3Context';
+import { authenticateUser, authenticateUser2 } from '../../hooks/useDidConnect';
 import { getWallet, WalletType } from './WalletOptions';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import {
@@ -29,6 +30,7 @@ export type ERC20TokenType = {
 
 export type Web3Data = {
   connectWallet: (wallet: WalletType) => Promise<void>;
+  connectDidWallet: (wallet: WalletType) => Promise<void>;
   disconnectWallet: () => void;
   currentAccount: string;
   connected: boolean;
@@ -114,6 +116,53 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
       localStorage.removeItem('mockWalletAddress');
     }
   }, [provider, connector]);
+
+  // const connectDidWallet = useCallback(
+  //   async (wallet: WalletType) => {
+  //   setLoading(true);
+  //   try {
+  //     // await threeId.connect(new EthereumAuthProvider(ethProvider, addresses[0]));
+  //     await authenticateUser().then((idx) => {
+  //       console.log('%cauthenticated:%s','background:orange', idx?.id);
+  //     }
+
+  //     );
+  //     setLoading(false);
+  //   } catch (e) {
+  //       console.log('error on activation', e);
+  //       setError(e);
+  //       setLoading(false);
+  //   }
+  // }, [disconnectWallet]);
+
+  // connect to the wallet and populate a DID.
+  const connectDidWallet = useCallback(
+    async (wallet: WalletType) => {
+      setLoading(true);
+      try {
+        const connector: AbstractConnector = getWallet(wallet, chainId);
+
+        if (connector instanceof WalletConnectConnector) {
+          connector.walletConnectProvider = undefined;
+        }
+
+        await activate(connector, undefined, true);
+        setConnector(connector);
+        setSwitchNetworkError(undefined);
+        localStorage.setItem('walletProvider', wallet.toString());
+        await authenticateUser2(connector).then((idx) => {
+          console.log('%cauthenticated:%s', 'background:orange', idx?.id);
+        });
+        setDeactivated(false);
+        setLoading(false);
+      } catch (e) {
+        console.log('error on activation', e);
+        setError(e);
+        setLoading(false);
+      }
+    },
+    [disconnectWallet]
+  );
 
   // connect to the wallet specified by wallet type
   const connectWallet = useCallback(
@@ -321,6 +370,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
       value={{
         web3ProviderData: {
           connectWallet,
+          connectDidWallet,
           disconnectWallet,
           provider,
           connected: active,

@@ -13,7 +13,7 @@ export type WalletRowProps = {
 };
 
 const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
-  const { connectWallet } = useWeb3Context();
+  const { connectWallet, connectDidWallet } = useWeb3Context();
 
   const getWalletIcon = (walletType: WalletType) => {
     switch (walletType) {
@@ -68,21 +68,39 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
   };
 
   return (
-    <Button
-      variant="outlined"
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-        mb: '8px',
-      }}
-      size="large"
-      onClick={() => connectWallet(walletType)}
-      endIcon={getWalletIcon(walletType)}
-    >
-      {walletName}
-    </Button>
+    <>
+      <Button
+        variant="outlined"
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '100%',
+          mb: '8px',
+        }}
+        size="large"
+        onClick={() => connectWallet(walletType)}
+        endIcon={getWalletIcon(walletType)}
+      >
+        {walletName}
+      </Button>
+
+      <Button
+        variant="outlined"
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '100%',
+          mb: '8px',
+        }}
+        size="large"
+        onClick={() => connectDidWallet(walletType)}
+        endIcon={getWalletIcon(walletType)}
+      >
+        {walletName} : Connect Did wallet
+      </Button>
+    </>
   );
 };
 

@@ -30,7 +30,7 @@ export const getWallet = (
 
   switch (wallet) {
     case WalletType.DID:
-      return;
+      return new InjectedConnector({});
     case WalletType.INJECTED:
       return new InjectedConnector({});
     case WalletType.WALLET_LINK:
