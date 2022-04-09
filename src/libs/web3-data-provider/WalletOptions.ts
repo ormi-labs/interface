@@ -10,7 +10,6 @@ import { UnsupportedChainIdError } from '@web3-react/core';
 import { SafeAppConnector } from '@gnosis.pm/safe-apps-web3-react';
 
 export enum WalletType {
-  DID = 'did',
   INJECTED = 'injected',
   WALLET_CONNECT = 'wallet_connect',
   WALLET_LINK = 'wallet_link',
@@ -29,8 +28,6 @@ export const getWallet = (
   const supportedChainIds = getSupportedChainIds();
 
   switch (wallet) {
-    case WalletType.DID:
-      return new InjectedConnector({});
     case WalletType.INJECTED:
       return new InjectedConnector({});
     case WalletType.WALLET_LINK:

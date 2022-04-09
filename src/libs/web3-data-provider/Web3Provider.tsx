@@ -3,8 +3,10 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { hexToAscii } from 'src/utils/utils';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 
+import { ThreeIdConnect } from '@3id/connect';
 import { Web3Context } from '../hooks/useWeb3Context';
-import { authenticateUser, authenticateUser2 } from '../../hooks/useDidConnect';
+import { authenticateUserDid, DidConnectType, getDidProvider } from '../../hooks/useDidConnect';
+import { createCeramic } from '../../hooks/useCeramic';
 import { getWallet, WalletType } from './WalletOptions';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import {
@@ -19,6 +21,7 @@ import { API_ETH_MOCK_ADDRESS, transactionType } from '@aave/contract-helpers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { TorusConnector } from '@web3-react/torus-connector';
+import { IDX } from '@ceramicstudio/idx';
 
 export type ERC20TokenType = {
   address: string;
@@ -30,9 +33,9 @@ export type ERC20TokenType = {
 
 export type Web3Data = {
   connectWallet: (wallet: WalletType) => Promise<void>;
-  connectDidWallet: (wallet: WalletType) => Promise<void>;
   disconnectWallet: () => void;
   currentAccount: string;
+  currentDid: string;
   connected: boolean;
   loading: boolean;
   provider: JsonRpcProvider | undefined;
@@ -62,6 +65,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
   // const [provider, setProvider] = useState<JsonRpcProvider>();
   const [mockAddress, setMockAddress] = useState<string>();
+  const [didConnect, setDidConnect] = useState<DidConnectType>();
   const [connector, setConnector] = useState<AbstractConnector>();
   const [loading, setLoading] = useState(false);
   const [tried, setTried] = useState(false);
@@ -97,6 +101,17 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     }
   }, [connector]);
 
+  const initializeDidConnect = async () => {
+    // |threeId| and |ceramic| only need to initalize once and are agnostic of user's wallet address.
+    // However, for |idx| if user switches wallets, they need to be reset.
+    if (didConnect) return;
+
+    const threeId = new ThreeIdConnect();
+    const ceramic = await createCeramic();
+
+    setDidConnect({ threeId, ceramic } as DidConnectType);
+  };
+
   const disconnectWallet = useCallback(async () => {
     cleanConnectorStorage();
     localStorage.removeItem('walletProvider');
@@ -117,53 +132,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     }
   }, [provider, connector]);
 
-  // const connectDidWallet = useCallback(
-  //   async (wallet: WalletType) => {
-  //   setLoading(true);
-  //   try {
-  //     // await threeId.connect(new EthereumAuthProvider(ethProvider, addresses[0]));
-  //     await authenticateUser().then((idx) => {
-  //       console.log('%cauthenticated:%s','background:orange', idx?.id);
-  //     }
-
-  //     );
-  //     setLoading(false);
-  //   } catch (e) {
-  //       console.log('error on activation', e);
-  //       setError(e);
-  //       setLoading(false);
-  //   }
-  // }, [disconnectWallet]);
-
-  // connect to the wallet and populate a DID.
-  const connectDidWallet = useCallback(
-    async (wallet: WalletType) => {
-      setLoading(true);
-      try {
-        const connector: AbstractConnector = getWallet(wallet, chainId);
-
-        if (connector instanceof WalletConnectConnector) {
-          connector.walletConnectProvider = undefined;
-        }
-
-        await activate(connector, undefined, true);
-        setConnector(connector);
-        setSwitchNetworkError(undefined);
-        localStorage.setItem('walletProvider', wallet.toString());
-        await authenticateUser2(connector).then((idx) => {
-          console.log('%cauthenticated:%s', 'background:orange', idx?.id);
-        });
-        setDeactivated(false);
-        setLoading(false);
-      } catch (e) {
-        console.log('error on activation', e);
-        setError(e);
-        setLoading(false);
-      }
-    },
-    [disconnectWallet]
-  );
-
   // connect to the wallet specified by wallet type
   const connectWallet = useCallback(
     async (wallet: WalletType) => {
@@ -179,6 +147,19 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         setConnector(connector);
         setSwitchNetworkError(undefined);
         localStorage.setItem('walletProvider', wallet.toString());
+
+        // Use connected wallet address to authenticate associated Did.
+        await initializeDidConnect();
+        if (didConnect) {
+          const didProvider = await getDidProvider(didConnect.threeId, connector);
+
+          if (didProvider) {
+            const did = await authenticateUserDid(didProvider, didConnect.ceramic);
+            didConnect.ceramic.did = did;
+            didConnect.idx = new IDX({ autopin: true, ceramic: didConnect.ceramic });
+          }
+        }
+
         setDeactivated(false);
         setLoading(false);
       } catch (e) {
@@ -370,7 +351,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
       value={{
         web3ProviderData: {
           connectWallet,
-          connectDidWallet,
           disconnectWallet,
           provider,
           connected: active,
@@ -381,6 +361,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           sendTx,
           signTxData,
           currentAccount: mockAddress || account?.toLowerCase() || '',
+          currentDid: didConnect?.idx?.id.toLowerCase() || '',
           addERC20Token,
           error,
           switchNetworkError,
