@@ -3,10 +3,9 @@ import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import { hexToAscii } from 'src/utils/utils';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 
-import { ThreeIdConnect } from '@3id/connect';
 import { Web3Context } from '../hooks/useWeb3Context';
-import { authenticateUserDid, DidConnectType, getDidProvider } from '../../hooks/useDidConnect';
-import { createCeramic } from '../../hooks/useCeramic';
+import { authenticateUserDid, getDidProvider, initThreeId } from '../../hooks/useDidConnect';
+import { initCeramic } from '../../hooks/useCeramic';
 import { getWallet, WalletType } from './WalletOptions';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import {
@@ -65,7 +64,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
   // const [provider, setProvider] = useState<JsonRpcProvider>();
   const [mockAddress, setMockAddress] = useState<string>();
-  const [didConnect, setDidConnect] = useState<DidConnectType>();
+  const [idx, setIdx] = useState<IDX>();
   const [connector, setConnector] = useState<AbstractConnector>();
   const [loading, setLoading] = useState(false);
   const [tried, setTried] = useState(false);
@@ -100,17 +99,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
       localStorage.removeItem('loglevel:http-helpers');
     }
   }, [connector]);
-
-  const initializeDidConnect = async () => {
-    // |threeId| and |ceramic| only need to initalize once and are agnostic of user's wallet address.
-    // However, for |idx| if user switches wallets, they need to be reset.
-    if (didConnect) return;
-
-    const threeId = new ThreeIdConnect();
-    const ceramic = await createCeramic();
-
-    setDidConnect({ threeId, ceramic } as DidConnectType);
-  };
 
   const disconnectWallet = useCallback(async () => {
     cleanConnectorStorage();
@@ -149,14 +137,17 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         localStorage.setItem('walletProvider', wallet.toString());
 
         // Use connected wallet address to authenticate associated Did.
-        await initializeDidConnect();
-        if (didConnect) {
-          const didProvider = await getDidProvider(didConnect.threeId, connector);
+        // Initialize ThreeIdConnect and CeramicApi which are global objects.
+        await initThreeId();
+        await initCeramic();
+
+        if (window.threeId !== undefined && window.ceramic !== undefined) {
+          const didProvider = await getDidProvider(window.threeId, connector);
 
           if (didProvider) {
-            const did = await authenticateUserDid(didProvider, didConnect.ceramic);
-            didConnect.ceramic.did = did;
-            didConnect.idx = new IDX({ autopin: true, ceramic: didConnect.ceramic });
+            const did = await authenticateUserDid(didProvider, window.ceramic);
+            window.ceramic.did = did;
+            setIdx(new IDX({ autopin: true, ceramic: window.ceramic }));
           }
         }
 
@@ -361,7 +352,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           sendTx,
           signTxData,
           currentAccount: mockAddress || account?.toLowerCase() || '',
-          currentDid: didConnect?.idx?.id.toLowerCase() || '',
+          currentDid: idx?.id.toLowerCase() || '',
           addERC20Token,
           error,
           switchNetworkError,

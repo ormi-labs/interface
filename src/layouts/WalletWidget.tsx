@@ -40,7 +40,6 @@ interface WalletWidgetProps {
 export default function WalletWidget({ open, setOpen, headerHeight, md }: WalletWidgetProps) {
   const { disconnectWallet, currentAccount, currentDid, connected, chainId, loading } =
     useWeb3Context();
-
   const { setWalletModalOpen } = useWalletModalContext();
 
   const { name: ensName, avatar: ensAvatar } = useGetEns(currentAccount);
