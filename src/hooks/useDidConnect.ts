@@ -3,7 +3,6 @@ import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { DID, DIDProvider } from 'dids';
 import { EthereumAuthProvider, ThreeIdConnect } from '@3id/connect';
-import { IDX } from '@ceramicstudio/idx';
 import type { CeramicApi } from '@ceramicnetwork/common';
 
 // Store threeId as global in window, because recreating it every time page loads
