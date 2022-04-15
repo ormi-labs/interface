@@ -22,6 +22,7 @@ import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem
 import { useAppDataContext } from '../../hooks/app-data-provider/useAppDataProvider';
 import { LiquidationRiskParametresInfoModal } from './LiquidationRiskParametresModal/LiquidationRiskParametresModal';
 
+import CreditIcon from '../../../public/icons/creditScore/credit-icon.svg';
 import WalletIcon from '../../../public/icons/markets/wallet-icon.svg';
 import NetAPYIcon from '../../../public/icons/markets/net-apy-icon.svg';
 import EmptyHeartIcon from '../../../public/icons/markets/empty-heart-icon.svg';
@@ -90,6 +91,48 @@ export const DashboardTopPanel = () => {
         withMarketSwitcher
         bridge={currentNetworkConfig.bridge}
       >
+        <TopInfoPanelItem
+          icon={<CreditIcon />}
+          title={
+            <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
+              <Trans>Credit Score</Trans>
+            </Box>
+          }
+          loading={loading}
+        >
+          <HealthFactorNumber
+            value={user?.healthFactor || '-1'}
+            variant={valueTypographyVariant}
+            onInfoClick={() => setOpen(true)}
+          />
+        </TopInfoPanelItem>
+
+        <TopInfoPanelItem
+          icon={<EmptyHeartIcon />}
+          title={
+            <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
+              <Trans>Health factor</Trans>
+              <HALTooltip />
+            </Box>
+          }
+          // TODO: need change icon
+          // icon={
+          //   <SvgIcon sx={{ fontSize: '24px' }}>
+          //     {+user.healthFactor >= 10 && <HfFull />}
+          //     {+user.healthFactor < 10 && +user.healthFactor >= 3 && <HfMiddle />}
+          //     {+user.healthFactor < 3 && +user.healthFactor >= 1 && <HfLow />}
+          //     {+user.healthFactor < 1 && <HfEmpty />}
+          //   </SvgIcon>
+          // }
+          loading={loading}
+        >
+          <HealthFactorNumber
+            value={user?.healthFactor || '-1'}
+            variant={valueTypographyVariant}
+            onInfoClick={() => setOpen(true)}
+          />
+        </TopInfoPanelItem>
+
         <TopInfoPanelItem icon={<WalletIcon />} title={<Trans>Net worth</Trans>} loading={loading}>
           {currentAccount ? (
             <FormattedNumber
@@ -129,34 +172,6 @@ export const DashboardTopPanel = () => {
             <NoData variant={noDataTypographyVariant} sx={{ opacity: '0.7' }} />
           )}
         </TopInfoPanelItem>
-
-        {currentAccount && user?.healthFactor !== '-1' && (
-          <TopInfoPanelItem
-            icon={<EmptyHeartIcon />}
-            title={
-              <Box sx={{ display: 'inline-flex', alignItems: 'center' }}>
-                <Trans>Health factor</Trans>
-                <HALTooltip />
-              </Box>
-            }
-            // TODO: need change icon
-            // icon={
-            //   <SvgIcon sx={{ fontSize: '24px' }}>
-            //     {+user.healthFactor >= 10 && <HfFull />}
-            //     {+user.healthFactor < 10 && +user.healthFactor >= 3 && <HfMiddle />}
-            //     {+user.healthFactor < 3 && +user.healthFactor >= 1 && <HfLow />}
-            //     {+user.healthFactor < 1 && <HfEmpty />}
-            //   </SvgIcon>
-            // }
-            loading={loading}
-          >
-            <HealthFactorNumber
-              value={user?.healthFactor || '-1'}
-              variant={valueTypographyVariant}
-              onInfoClick={() => setOpen(true)}
-            />
-          </TopInfoPanelItem>
-        )}
 
         {currentAccount && claimableRewardsUsd > 0 && (
           <TopInfoPanelItem

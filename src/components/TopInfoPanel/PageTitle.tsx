@@ -20,6 +20,7 @@ export const PageTitle = ({ pageTitle, withMarketSwitcher }: PageTitleProps) => 
     <Box
       sx={{
         display: 'flex',
+        justifyContent: 'flex-end',
         alignItems: { xs: 'flex-start', xsm: 'center' },
         mb: pageTitle ? 4 : 0,
         flexDirection: { xs: 'column', xsm: 'row' },
