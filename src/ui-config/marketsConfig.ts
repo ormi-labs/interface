@@ -62,20 +62,21 @@ export const marketsData: {
     marketTitle: 'Ethereum Kovan',
     chainId: ChainId.kovan,
     enabledFeatures: {
-      faucet: true,
-      governance: true,
-      staking: true,
-      incentives: true,
+      faucet: false,
+      governance: false,
+      staking: false,
+      incentives: false,
     },
     rpcOnly: true,
     addresses: {
-      LENDING_POOL_ADDRESS_PROVIDER: '0x88757f2f99175387ab4c6a4b3067c77a695b0349'.toLowerCase(),
-      LENDING_POOL: '0xE0fBa4Fc209b4948668006B2bE61711b7f465bAe',
-      WETH_GATEWAY: '0xA61ca04DF33B72b235a8A28CfB535bb7A5271B70',
-      FAUCET: '0x600103d518cC5E8f3319D532eB4e5C268D32e604',
-      WALLET_BALANCE_PROVIDER: '0x07DC923859b68e9399d787bf52c4Aa9eBe3490aF',
-      UI_POOL_DATA_PROVIDER: '0x0D410Ce47834798028c9CD894A29A4b12A9d5624',
-      UI_INCENTIVE_DATA_PROVIDER: '0x50e468e1AAF408a2EB4614e4b45f832700Cda7F4',
+      LENDING_POOL_ADDRESS_PROVIDER: '0x9BF95C16b5698b3EeC6cC0d33728fAB40c691bd1'.toLowerCase(),
+      LENDING_POOL: '0x10DcdCAfA77CB47C8b2a496E4Ec264F96B729923',
+      WETH_GATEWAY: '0xcD34503e5fD5Ff9bC370679a92ad26011bC7cd9F',
+      FAUCET: '0x600103d518cC5E8f3319D532eB4e5C268D32e604', // old addr
+      WALLET_BALANCE_PROVIDER: '0xD1d32A1849DDAc6aa6288B867d6Ae2A0eF8AcC2e',
+      UI_POOL_DATA_PROVIDER: '0x0D410Ce47834798028c9CD894A29A4b12A9d5624', // old addr
+      // UI_POOL_DATA_PROVIDER: '0x4b11D2AFFd167A83D49492ba739cd728574af6d6',
+      UI_INCENTIVE_DATA_PROVIDER: '0x50e468e1AAF408a2EB4614e4b45f832700Cda7F4', // old addr
     },
   },
   [CustomMarket.proto_mainnet]: {
