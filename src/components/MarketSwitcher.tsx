@@ -146,7 +146,7 @@ export const MarketSwitcher = () => {
             p: 0,
             backgroundColor: 'transparent !important',
           },
-          '.MuiSelect-icon': { color: '#F1F1F3' },
+          '.MuiSelect-icon': { color: '#F9FAFB' },
         },
         MenuProps: {
           anchorOrigin: {

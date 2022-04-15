@@ -59,7 +59,7 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
           sx={{ p: '7px 8px', minWidth: 'unset', ml: 2 }}
           onClick={() => setOpen(true)}
         >
-          <SvgIcon sx={{ color: '#F1F1F3' }} fontSize="small">
+          <SvgIcon sx={{ color: '#F9FAFB' }} fontSize="small">
             <MenuIcon />
           </SvgIcon>
         </Button>
@@ -81,9 +81,9 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
             <MenuItemsWrapper title={<Trans>Links</Trans>}>
               <List>
                 {moreNavigation.map((item, index) => (
-                  <ListItem component={Link} href={item.link} sx={{ color: '#F1F1F3' }} key={index}>
+                  <ListItem component={Link} href={item.link} sx={{ color: '#F9FAFB' }} key={index}>
                     <ListItemIcon sx={{ minWidth: 'unset', mr: 3 }}>
-                      <SvgIcon sx={{ fontSize: '20px', color: '#F1F1F3' }}>{item.icon}</SvgIcon>
+                      <SvgIcon sx={{ fontSize: '20px', color: '#F9FAFB' }}>{item.icon}</SvgIcon>
                     </ListItemIcon>
 
                     <ListItemText>{i18n._(item.title)}</ListItemText>
