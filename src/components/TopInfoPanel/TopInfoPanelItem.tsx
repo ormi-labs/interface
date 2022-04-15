@@ -58,7 +58,7 @@ export const TopInfoPanelItem = ({
               justifyContent: 'center',
               border: '1px solid #EBEBED1F',
               borderRadius: '12px',
-              bgcolor: '#383D51',
+              bgcolor: '#243B53',
               boxShadow: '0px 2px 1px rgba(0, 0, 0, 0.05), 0px 0px 1px rgba(0, 0, 0, 0.25)',
               width: 42,
               height: 42,
@@ -81,7 +81,7 @@ export const TopInfoPanelItem = ({
           {titleIcon && titleIcon}
         </Box>
 
-        {loading ? <Skeleton height={upToSM ? 28 : 24} sx={{ background: '#383D51' }} /> : children}
+        {loading ? <Skeleton height={upToSM ? 28 : 24} sx={{ background: '#243B53' }} /> : children}
       </Box>
     </Box>
   );
