@@ -142,7 +142,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             {ensNameAbbreviated && (
-              <Typography variant="h4" color={{ xs: '#F1F1F3', md: 'text.primary' }}>
+              <Typography variant="h4" color={{ xs: '#F9FAFB', md: 'text.primary' }}>
                 {ensNameAbbreviated}
               </Typography>
             )}
@@ -152,7 +152,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
               color={
                 ensNameAbbreviated
                   ? { xs: '#A5A8B6', md: 'text.secondary' }
-                  : { xs: '#F1F1F3', md: 'text.primary' }
+                  : { xs: '#F9FAFB', md: 'text.primary' }
               }
             >
               {textCenterEllipsis(currentAccount, ensNameAbbreviated ? 12 : 7, 4)}
@@ -231,7 +231,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
                 borderRadius: '50%',
               }}
             />
-            <Typography color={{ xs: '#F1F1F3', md: 'text.primary' }} variant="subheader1">
+            <Typography color={{ xs: '#F9FAFB', md: 'text.primary' }} variant="subheader1">
               {networkConfig.name}
             </Typography>
           </Box>
@@ -241,13 +241,13 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
 
       <Box
         component={component}
-        sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
+        sx={{ color: { xs: '#F9FAFB', md: 'text.primary' } }}
         onClick={handleCopy}
       >
         <ListItemIcon
           sx={{
             color: {
-              xs: '#F1F1F3',
+              xs: '#F9FAFB',
               md: 'primary.light',
               minWidth: 'unset',
               marginRight: 12,
@@ -267,13 +267,13 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
         <Link href={networkConfig.explorerLinkBuilder({ address: currentAccount })}>
           <Box
             component={component}
-            sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
+            sx={{ color: { xs: '#F9FAFB', md: 'text.primary' } }}
             onClick={handleClose}
           >
             <ListItemIcon
               sx={{
                 color: {
-                  xs: '#F1F1F3',
+                  xs: '#F9FAFB',
                   md: 'primary.light',
                   minWidth: 'unset',
                   marginRight: 12,
@@ -293,12 +293,12 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
 
       <Box
         component={component}
-        sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
+        sx={{ color: { xs: '#F9FAFB', md: 'text.primary' } }}
         onClick={handleDisconnect}
       >
         <ListItemIcon
           sx={{
-            color: { xs: '#F1F1F3', md: 'primary.light', minWidth: 'unset', marginRight: 12 },
+            color: { xs: '#F9FAFB', md: 'primary.light', minWidth: 'unset', marginRight: 12 },
           }}
         >
           <SvgIcon fontSize="small">
@@ -317,7 +317,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
       {md && connected && open ? (
         <MobileCloseButton setOpen={setOpen} />
       ) : loading ? (
-        <Skeleton height={36} width={126} sx={{ background: '#383D51' }} />
+        <Skeleton height={36} width={126} sx={{ background: '#243B53' }} />
       ) : (
         <Button
           variant={connected ? 'surface' : 'gradient'}

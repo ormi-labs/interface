@@ -1,5 +1,3 @@
-import '/public/fonts/inter/inter.css';
-
 import { ApolloProvider } from '@apollo/client';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { NextPage } from 'next';

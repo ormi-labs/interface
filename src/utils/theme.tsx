@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
 } from '@heroicons/react/outline';
 import { SvgIcon, Theme, ThemeOptions } from '@mui/material';
+import '@fontsource/raleway';
 
 import { createTheme } from '@mui/material/styles';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -18,7 +19,7 @@ const {
   typography: { pxToRem },
 } = theme;
 
-const FONT = 'Inter, Arial';
+const FONT = 'Raleway';
 
 declare module '@mui/material/styles/createPalette' {
   interface PaletteColor extends ColorPartial {}
@@ -127,9 +128,9 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
     palette: {
       mode,
       primary: {
-        main: getColor('#383D51', '#EAEBEF'),
-        light: getColor('#62677B', '#F1F1F3'),
-        dark: getColor('#292E41', '#D2D4DC'),
+        main: getColor('#243B53', '#EAEBEF'),
+        light: getColor('#62677B', '#F9FAFB'),
+        dark: getColor('#243B53', '#D2D4DC'),
       },
       secondary: {
         main: getColor('#FF607B', '#F48FB1'),
@@ -165,25 +166,25 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         '200': getColor('#ECF8ED', '#0A130B'), // for alert background
       },
       text: {
-        primary: getColor('#303549', '#F1F1F3'),
+        primary: getColor('#303549', '#F9FAFB'),
         secondary: getColor('#62677B', '#A5A8B6'),
         disabled: getColor('#D2D4DC', '#62677B'),
         muted: getColor('#A5A8B6', '#8E92A3'),
       },
       background: {
-        default: getColor('#F1F1F3', '#1B2030'),
-        paper: getColor('#FFFFFF', '#292E41'),
-        surface: getColor('#F7F7F9', '#383D51'),
-        header: getColor('#2B2D3C', '#1B2030'),
+        default: getColor('#F9FAFB', '#070A0E'),
+        paper: getColor('#FFFFFF', '#243B53'),
+        surface: getColor('#F7F7F9', '#243B53'),
+        header: getColor('#121212', '#070A0E'),
       },
       divider: getColor('#EAEBEF', '#EBEBEF14'),
       action: {
         active: getColor('#8E92A3', '#EBEBEF8F'),
-        hover: getColor('#F1F1F3', '#EBEBEF14'),
+        hover: getColor('#F9FAFB', '#EBEBEF14'),
         selected: getColor('#EAEBEF', '#EBEBEF29'),
         disabled: getColor('#BBBECA', '#EBEBEF4D'),
         disabledBackground: getColor('#EAEBEF', '#EBEBEF1F'),
-        focus: getColor('#F1F1F3', '#EBEBEF1F'),
+        focus: getColor('#F9FAFB', '#EBEBEF1F'),
       },
       gradients: {
         aaveGradient: 'linear-gradient(248.86deg, #B6509E 10.51%, #2EBAC6 93.41%)',
@@ -409,7 +410,7 @@ export function getThemedComponents(theme: Theme) {
               color: theme.palette.common.white,
               border: '1px solid',
               borderColor: '#EBEBED1F',
-              backgroundColor: '#383D51',
+              backgroundColor: '#243B53',
               '&:hover, &.Mui-focusVisible': {
                 backgroundColor: theme.palette.background.header,
               },
@@ -791,7 +792,7 @@ export function getThemedComponents(theme: Theme) {
       MuiToggleButtonGroup: {
         styleOverrides: {
           root: {
-            backgroundColor: '#383D51',
+            backgroundColor: '#243B53',
             border: '1px solid rgba(235, 235, 237, 0.12)',
             padding: '4px',
           },
@@ -802,7 +803,7 @@ export function getThemedComponents(theme: Theme) {
           root: {
             border: '0px',
             flex: 1,
-            backgroundColor: '#383D51',
+            backgroundColor: '#243B53',
             borderRadius: '4px',
 
             '&.Mui-selected, &.Mui-selected:hover': {
