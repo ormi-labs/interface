@@ -143,7 +143,6 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             {ensNameAbbreviated && (
               <Typography variant="h4" color={{ xs: '#F9FAFB', md: 'text.primary' }}>
-<<<<<<< HEAD
                 {ensNameAbbreviated}
               </Typography>
             )}
@@ -188,8 +187,6 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             {ensNameAbbreviated && (
               <Typography variant="h4" color={{ xs: '#F1F1F3', md: 'text.primary' }}>
-=======
->>>>>>> 1dca6f9 (theme change (#22))
                 {ensNameAbbreviated}
               </Typography>
             )}
