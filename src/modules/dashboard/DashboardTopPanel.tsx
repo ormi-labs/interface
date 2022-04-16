@@ -15,12 +15,14 @@ import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 // import HfMiddle from '/public/icons/healthFactor/hfMiddle.svg';
 import HALTooltip from '../../components/HALTooltip';
 import { HealthFactorNumber } from '../../components/HealthFactorNumber';
+import { CreditScoreNumber } from '../../components/CreditScoreNumber';
 import { FormattedNumber } from '../../components/primitives/FormattedNumber';
 import { NoData } from '../../components/primitives/NoData';
 import { TopInfoPanel } from '../../components/TopInfoPanel/TopInfoPanel';
 import { TopInfoPanelItem } from '../../components/TopInfoPanel/TopInfoPanelItem';
 import { useAppDataContext } from '../../hooks/app-data-provider/useAppDataProvider';
 import { LiquidationRiskParametresInfoModal } from './LiquidationRiskParametresModal/LiquidationRiskParametresModal';
+import { CreditScoreDetailsInfoModal } from './CreditScoreDetailsModal/CreditScoreDetailsModal';
 
 import CreditIcon from '../../../public/icons/creditScore/credit-icon.svg';
 import WalletIcon from '../../../public/icons/markets/wallet-icon.svg';
@@ -33,7 +35,8 @@ export const DashboardTopPanel = () => {
   const { currentNetworkConfig, currentMarketData, currentMarket } = useProtocolDataContext();
   const { user, reserves, loading } = useAppDataContext();
   const { currentAccount } = useWeb3Context();
-  const [open, setOpen] = useState(false);
+  const [riskInfoModalOpen, setRiskInfoModalOpen] = useState(false);
+  const [creditInfoModalOpen, setCreditInfoModalOpen] = useState(false);
   const { openClaimRewards } = useModalContext();
 
   const theme = useTheme();
@@ -100,10 +103,11 @@ export const DashboardTopPanel = () => {
           }
           loading={loading}
         >
-          <HealthFactorNumber
-            value={user?.healthFactor || '-1'}
+          {/*TODO(vicfei): user.creditScore needs to be plumbed through. Currently, value is hard coded. */}
+          <CreditScoreNumber
+            value={/* user?.creditScore || '0' */ '2'}
             variant={valueTypographyVariant}
-            onInfoClick={() => setOpen(true)}
+            onInfoClick={() => setCreditInfoModalOpen(true)}
           />
         </TopInfoPanelItem>
 
@@ -129,7 +133,7 @@ export const DashboardTopPanel = () => {
           <HealthFactorNumber
             value={user?.healthFactor || '-1'}
             variant={valueTypographyVariant}
-            onInfoClick={() => setOpen(true)}
+            onInfoClick={() => setRiskInfoModalOpen(true)}
           />
         </TopInfoPanelItem>
 
@@ -214,9 +218,17 @@ export const DashboardTopPanel = () => {
         )}
       </TopInfoPanel>
 
+      <CreditScoreDetailsInfoModal
+        open={creditInfoModalOpen}
+        setOpen={setCreditInfoModalOpen}
+        healthFactor={user?.healthFactor || '-1'}
+        loanToValue={loanToValue}
+        currentLoanToValue={user?.currentLoanToValue || '0'}
+        currentLiquidationThreshold={user?.currentLiquidationThreshold || '0'}
+      />
       <LiquidationRiskParametresInfoModal
-        open={open}
-        setOpen={setOpen}
+        open={riskInfoModalOpen}
+        setOpen={setRiskInfoModalOpen}
         healthFactor={user?.healthFactor || '-1'}
         loanToValue={loanToValue}
         currentLoanToValue={user?.currentLoanToValue || '0'}
