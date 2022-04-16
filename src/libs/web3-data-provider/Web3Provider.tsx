@@ -4,6 +4,8 @@ import { hexToAscii } from 'src/utils/utils';
 import { getNetworkConfig } from 'src/utils/marketsAndNetworksConfig';
 
 import { Web3Context } from '../hooks/useWeb3Context';
+import { authenticateUserDid, getDidProvider, initThreeId } from '../../hooks/useDidConnect';
+import { initCeramic } from '../../hooks/useCeramic';
 import { getWallet, WalletType } from './WalletOptions';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import {
@@ -18,6 +20,7 @@ import { API_ETH_MOCK_ADDRESS, transactionType } from '@aave/contract-helpers';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { TorusConnector } from '@web3-react/torus-connector';
+import { IDX } from '@ceramicstudio/idx';
 
 export type ERC20TokenType = {
   address: string;
@@ -31,6 +34,7 @@ export type Web3Data = {
   connectWallet: (wallet: WalletType) => Promise<void>;
   disconnectWallet: () => void;
   currentAccount: string;
+  currentDid: string;
   connected: boolean;
   loading: boolean;
   provider: JsonRpcProvider | undefined;
@@ -60,6 +64,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
   // const [provider, setProvider] = useState<JsonRpcProvider>();
   const [mockAddress, setMockAddress] = useState<string>();
+  const [idx, setIdx] = useState<IDX>();
   const [connector, setConnector] = useState<AbstractConnector>();
   const [loading, setLoading] = useState(false);
   const [tried, setTried] = useState(false);
@@ -130,6 +135,22 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         setConnector(connector);
         setSwitchNetworkError(undefined);
         localStorage.setItem('walletProvider', wallet.toString());
+
+        // Use connected wallet address to authenticate associated Did.
+        // Initialize ThreeIdConnect and CeramicApi which are global objects.
+        await initThreeId();
+        await initCeramic();
+
+        if (window.threeId !== undefined && window.ceramic !== undefined) {
+          const didProvider = await getDidProvider(window.threeId, connector);
+
+          if (didProvider) {
+            const did = await authenticateUserDid(didProvider, window.ceramic);
+            window.ceramic.did = did;
+            setIdx(new IDX({ autopin: true, ceramic: window.ceramic }));
+          }
+        }
+
         setDeactivated(false);
         setLoading(false);
       } catch (e) {
@@ -331,6 +352,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           sendTx,
           signTxData,
           currentAccount: mockAddress || account?.toLowerCase() || '',
+          currentDid: idx?.id.toLowerCase() || '',
           addERC20Token,
           error,
           switchNetworkError,
