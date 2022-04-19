@@ -22,6 +22,11 @@ export const navigation: Navigation[] = [
     dataCy: 'menuDashboard',
   },
   {
+    link: ROUTES.profile,
+    title: t`Profile`,
+    dataCy: 'menuProfile',
+  },
+  {
     link: ROUTES.markets,
     title: t`Markets`,
   },
