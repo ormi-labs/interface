@@ -54,7 +54,8 @@ export type BaseNetworkConfig = Omit<NetworkConfig, 'explorerLinkBuilder'>;
 export const networkConfigs: Record<string, BaseNetworkConfig> = {
   [ChainId.kovan]: {
     name: 'Kovan',
-    publicJsonRPCUrl: ['https://eth-kovan.alchemyapi.io/v2/demo', 'https://kovan.poa.network'],
+    // publicJsonRPCUrl: ['https://eth-kovan.alchemyapi.io/v2/demo', 'https://kovan.poa.network'],
+    publicJsonRPCUrl: ['https://eth-kovan.alchemyapi.io/v2/Lm0kAEfpbLmeuJGvtnCQ_nZa3OLT8dR3'],
     // protocolDataUrl: 'https://api.thegraph.com/subgraphs/name/aave/protocol-v2-kovan',
     baseUniswapAdapter: '0xf86Be05f535EC2d217E4c6116B3fa147ee5C05A1',
     baseAssetSymbol: 'ETH',

@@ -196,7 +196,7 @@ export default function WalletWidget({ open, setOpen, headerHeight, md }: Wallet
               color={
                 ensNameAbbreviated
                   ? { xs: '#A5A8B6', md: 'text.secondary' }
-                  : { xs: '#F1F1F3', md: 'text.primary' }
+                  : { xs: '#F9FAFB', md: 'text.primary' }
               }
             >
               {textCenterEllipsis(currentDid, 12, 4)}
