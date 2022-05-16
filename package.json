@@ -30,6 +30,7 @@
     "test:avalanche": "npx cypress-repeat run -n 2 --rerun-failed-only --spec \"cypress/integration/3-avalanche-market/**/*.spec.ts\""
   },
   "dependencies": {
+    "3id-did-provider": "^1.1.1",
     "@3id/connect": "^0.2.5",
     "@aave/contract-helpers": "1.0.4",
     "@aave/math-utils": "1.0.4",
@@ -45,7 +46,6 @@
     "@fontsource/raleway": "^4.5.5",
     "@gnosis.pm/safe-apps-web3-react": "^1.2.0",
     "@graphql-codegen/add": "^3.1.1",
-    "3id-did-provider": "^1.1.1",
     "@graphql-codegen/cli": "^2.6.2",
     "@graphql-codegen/typescript-operations": "^2.3.2",
     "@graphql-codegen/typescript-react-apollo": "^3.2.8",

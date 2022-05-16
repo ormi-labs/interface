@@ -8,7 +8,7 @@ export const ProfileInteractionBar = () => {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xsm: 3 } }}>
       <Button variant="contained" sx={{ borderRadius: 10 }}>
-        <MoreHorizIcon fontSize=".5rem" />
+        <MoreHorizIcon fontSize="small" />
       </Button>
 
       <Button variant="contained" sx={{ borderRadius: 10 }}>
