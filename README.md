@@ -39,6 +39,14 @@ yarn
 yarn dev
 ```
 
+To use local fork mode, run the following commands in console:
+```
+localStorage.setItem('forkEnabled', 'true');
+localStorage.setItem('forkBaseChainId', 1); // the networkId you are forking
+localStorage.setItem('forkNetworkId', '3030'); // the networkId on the fork
+localStorage.setItem('forkRPCUrl', 'http://127.0.0.1:8545');
+```
+
 ## Contribution
 
 For instructions on local development, deployment, configurations & feature proposals, see [Contributing](./CONTRIBUTING.md)
