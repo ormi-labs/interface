@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@a12a3943b4bdde767164f792f33f40b04645d846 # v3.0.0
 
-      - uses: actions/setup-node@9ced9a43a244f3ac94f13bfd896db8c8f30da67a # v3.0.0
+      - uses: actions/setup-node@5b949b50c3461bbcd5a540b150c368278160234a # v3.0.0
         with:
           node-version-file: '.nvmrc'
           cache: 'yarn'
