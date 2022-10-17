@@ -26,7 +26,7 @@ jobs:
           cache: 'yarn'
 
       - name: crowdin action
-        uses: crowdin/github-action@9237b4cb361788dfce63feb2e2f15c09e2fe7415 # v1.4.7
+        uses: crowdin/github-action@85c30ed2c7f2468a5e1b5863c3f15a67e4329f82 # v1.4.7
         with:
           project_id: 502668
           token: ${{ secrets.CROWDIN_TOKEN }}
